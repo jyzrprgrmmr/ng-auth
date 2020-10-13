@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  role = 'unauthorized';
+  
+  getLogStatus(evt){
+  console.log(evt)
 }
+}
+

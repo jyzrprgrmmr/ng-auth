@@ -1,0 +1,30 @@
+<div class="navigation" >
+    <div class="menu">
+      <div class="brand">Token Auth</div>
+        <ul class="menu-links" *ngIf="role == 'unauthorized'">
+          <li [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{'exact':true}" class="links">Home</li>
+          <li [routerLink]="['about']" [routerLinkActive]="['active']" class="links">About</li>
+          <li [routerLink]="['contacts']" [routerLinkActive]="['active']" class="links">Contacts</li>
+        </ul>
+    </div>
+    <div class="menu">
+      <ul class="menu-links">
+        <li (click)="logout()" ><img class="user" src="../../../assets/images/profile-user.png" alt="" *ngIf="!isLoggedIn" routerLink="login"></li>
+        <li (click)="logout()"><img class="power-off" src="../../../assets/images/power.png" alt="" *ngIf="isLoggedIn" (click)="logOut(logout)"></li>      
+      </ul>
+    </div>
+  </div>
+    
+    
+    <ng-template #logout let-modal>
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-basic-title">Confirm Logout</h5>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ngbAutofocus (click)="modal.close()">Cancel</button>
+          <button type="button" class="btn btn-danger" ngbAutofocus (click)="modal.close('logout')">Logout</button>
+        </div>
+      </ng-template>

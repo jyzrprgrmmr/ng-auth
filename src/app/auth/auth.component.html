@@ -1,0 +1,63 @@
+<div class="login-page">
+   <div *ngIf="isLoginMode" class="sign-in">
+    <form [formGroup]="loginform" (ngSubmit)="login()">
+        <h4 class="title">BHOUSE LOGIN</h4>
+        <p class="sub-title" *ngIf="!errorMessage;else errorMsg">Enter your credentials here</p>
+        <ng-template #errorMsg>
+            <p class="err-msg2">{{errorMessage}}</p>
+        </ng-template>
+        <input type="text" [formControlName]="'email'" class="form-control" placeholder="Username or Email"/>
+        <p *ngIf="f.email.touched && f.email.errors?.required" class="err-msg1" required>Email is required</p>
+
+        <input type="password" [formControlName]="'password'" class="form-control" placeholder="Password"/>
+        <p *ngIf="f.password.touched && f.password.errors?.required" class="err-msg1" required>Password is required</p>
+
+        <button type="submit" class="btn btn-primary auth-btn">LOGIN</button>
+        <p (click)="toggleMode()" class="toggler">Not yet registered?Click here...</p> 
+    </form>
+    </div>
+
+    <div *ngIf="!isLoginMode" class="sign-up">
+        <form [formGroup]="regform" (ngSubmit)="register()">
+            <h4 class="title">BHOUSE REGISTRATION</h4>
+            <p class="sub-title" *ngIf="!errorMessage;else errorMsg">Create your account here</p>
+            <ng-template #errorMsg>
+                <p class="err-msg2">{{errorMessage}}</p>
+            </ng-template>
+            <div class="name-fields d-flex justify-content-between">
+                <div style="width:49%">
+                  <input type="text" [formControlName]="'firstname'" class="form-control" placeholder="Firstname"/>
+                  <p *ngIf="f.firstname.touched && f.firstname.errors?.required" class="err-msg1" required>Firstname is required</p>  
+                </div>
+                <div style="width:49%">
+                  <input type="text" [formControlName]="'lastname'" class="form-control" placeholder="Lastname"/>
+                  <p *ngIf="f.lastname.touched && f.lastname.errors?.required" class="err-msg1" required>Lastname is required</p>
+                </div>
+                
+            </div>
+            <select [formControlName]="'gender'" name="gender" class="form-control">
+                <option value="" [attr.selected]="true" disabled>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <p *ngIf="f.gender.touched && f.gender.errors?.required" class="err-msg1" required>Gender is required</p>
+            <input type="text" [formControlName]="'email'" class="form-control" placeholder="Email"/>
+            <p *ngIf="f.email.touched && f.email.errors?.required" class="err-msg1" required>Email is required</p>
+            <input type="password" [formControlName]="'password'" class="form-control" placeholder="Password"/>
+            <p *ngIf="f.password.touched && f.password.errors?.required" class="err-msg1" required>Password is required</p>
+
+            <input type="password" [formControlName]="'password1'" class="form-control" placeholder="Confirm password"/>
+            <p *ngIf="f.password1.touched && f.password1.errors?.required" class="err-msg1" required>Confirm Password is required</p>
+            <p *ngIf="f.password1.touched && f.password1.errors?.mustMatch" class="err-msg1" required>Passwords do not match</p>
+            <button type="submit" class="btn btn-primary auth-btn">Register</button>
+            <div (click)="toggleMode()" class="toggler">Already have an account?Login here...</div> 
+        </form>  
+    </div>
+
+    
+</div>
+
+
+
+
+

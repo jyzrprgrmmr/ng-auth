@@ -1,0 +1,44 @@
+.container{
+    all:unset;
+    background:blue;
+}
+
+.shop-banner{
+    height:60vh;
+    background: url('../../../assets/images/login.png');
+}
+
+.shop {
+    transform: translateY(-10vh);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    padding: 0 50px;
+    grid-gap: 10px;
+    justify-content: center;
+  }
+
+  .shop > div {
+    text-align: center;
+    font-size: 30px;
+    padding:0;
+    height: 320px;
+    border: 1px solid lightslategray;
+  }
+
+  .shop > div:hover{
+    background-color: rgba(255, 255, 255, 0.61);
+  }
+
+  .item{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .title{
+          background: #fff;
+          width:80%;
+      }
+
+      .icon img{
+          height:250px
+      }
+  }
